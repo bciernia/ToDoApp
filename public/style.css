@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.new-task-from{
+    margin: 1rem auto auto;
+    width: 40rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do App</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Handlee&family=Montserrat&display=swap"
+            rel="stylesheet"
+    />
+</head>
+<body>
+
+<form class="new-task-from">
+    <label>Task name</label>
+    <input type="text" class="task-name" name="task-name">
+    <label>Task description</label>
+    <textarea rows="4" cols="50" class="task-desc" name="task-desc"></textarea>
+    <button type="submit">Add new task</button>
+</form>
+
+<button class="btn-get-tasks">Get all tasks</button>
+<div class="tasks">
+    <div class="task">
+        <p class="taskName">Task name</p>
+    </div>
+</div>
+<script src="index.js" type="module"></script>
+</body>
+</html>
