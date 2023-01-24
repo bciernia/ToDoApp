@@ -8,5 +8,7 @@ export const createTaskFromUserData = () => {
         "taskId": 1,
         "taskName": taskName,
         "taskDesc": taskDesc,
+        "isTaskFinished": false,
+
     }
 }
