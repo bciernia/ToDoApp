@@ -5,7 +5,7 @@ const taskRouter = express.Router();
 
 taskRouter
 
-    .get('/getTasks', async (req, res) => {
+    .get('/task/all', async (req, res) => {
         const tasks = await readFile('task.json', 'utf8');
         const taskArray = tasks.split("\\");
         taskArray.pop();

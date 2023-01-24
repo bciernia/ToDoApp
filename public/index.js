@@ -7,15 +7,13 @@ const btnGetTasks = document.querySelector(".btn-get-tasks");
 taskForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const task= createTaskFromUserData();
+    const task = createTaskFromUserData();
 
     sendTaskToDb(task);
 })
 
 btnGetTasks.addEventListener('click', () => {
-    fetch('http://localhost:3000/getTasks')
+    fetch('http://localhost:3000/task/all')
         .then(res => res.json())
         .then(data => console.log(data));
-
-    console.log("mamy to");
 });
