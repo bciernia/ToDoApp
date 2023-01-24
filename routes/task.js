@@ -1,34 +1,35 @@
 const express = require('express');
-const {writeFile, appendFile, readFile} = require('fs').promises;
+const {writeFile, readFile} = require('fs').promises;
 
 const taskRouter = express.Router();
+
+const getParsedTasksFromFile = async () => {
+    const tasks = await readFile('task.json', "utf8");
+
+    return tasks ? JSON.parse(tasks) : [];
+}
 
 taskRouter
 
     .get('/task/all', async (req, res) => {
         const tasks = await readFile('task.json', 'utf8');
-        const taskArray = tasks.split("\\");
-        taskArray.pop();
 
-        const test = taskArray.map((item) => JSON.parse(item));
-
-        res.send(test);
+        res.send(tasks);
     })
 
     .get('/task/:taskId', async(req, res) => {
-        const tasks = await readFile('task.json', 'utf8');
-        const taskArray = tasks.split("\\");
         const taskId = req.params.taskId;
-        taskArray.pop();
+        const tasks = await getParsedTasksFromFile();
 
-        console.log(taskArray[taskId-1]);
+        tasks[taskId-1] ? res.send(tasks[taskId-1]) : res.send("There is no task with this ID");
     })
 
     .post('/sendTask', async (req, res) => {
         const task = req.body
-        console.log(task);
+        const tasks = await getParsedTasksFromFile();
+        tasks.push(task);
 
-        await appendFile('task.json', JSON.stringify(task) + "\\", "utf8");
+        await writeFile('task.json', JSON.stringify(tasks), 'utf8');
     })
 
 module.exports = {
