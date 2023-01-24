@@ -63,8 +63,18 @@ export const createLabel = (inputName) => {
     return label;
 };
 
-export const createUnorderedList = (additionalClasses, rowsNumber) => {
+export const createListRow = (additionalClasses) => {
+    const li = document.createElement('li');
+
+    li.classList.add(...additionalClasses);
+
+    return li;
+}
+
+export const createUnorderedList = (additionalClasses) => {
     const ul = document.createElement('ul');
 
+    ul.classList.add(...additionalClasses);
 
+    return ul;
 }
