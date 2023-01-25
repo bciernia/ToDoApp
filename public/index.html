@@ -12,21 +12,25 @@
     />
 </head>
 <body>
+<h1>ToDo App</h1>
 
 <form class="new-task-from">
     <label>Task name</label>
     <input type="text" class="task-name" name="task-name">
     <label>Task description</label>
     <textarea rows="4" cols="50" class="task-desc" name="task-desc"></textarea>
+    <label for="task-importance">Task importance:</label>
+    <select id="task-importance" name="task-importance">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+    </select>
     <button type="submit">Add new task</button>
 </form>
 
 <button class="btn-get-tasks">Get all tasks</button>
-<div class="tasks">
-    <div class="task">
-        <p class="taskName">Task name</p>
-    </div>
-</div>
+<h2 style="text-align: center">Your tasks</h2>
+<ul class="task-list"></ul>
 <script src="index.js" type="module"></script>
 </body>
 </html>

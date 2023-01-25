@@ -1,4 +1,4 @@
-export const postItem = (url, item) => {
+export const postData = (url, item) => {
     fetch(url, {
         method: "POST",
         headers: {
