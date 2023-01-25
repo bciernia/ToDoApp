@@ -1,9 +1,11 @@
 import {createTaskFromUserData} from "./modules/todo-app/createTaskFromUserData.js";
 import {sendTaskToDb} from "/modules/todo-app/sendTask.js";
-import {showUserTasks} from "./modules/todo-app/showUserTasks.js";
+import {renderTasks} from "./modules/todo-app/getTasks.js";
 
 const taskForm = document.querySelector(".new-task-from");
 const btnGetTasks = document.querySelector(".btn-get-tasks");
+
+renderTasks();
 
 taskForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -16,8 +18,6 @@ taskForm.addEventListener('submit', (event) => {
 })
 
 btnGetTasks.addEventListener('click', () => {
-    fetch('http://localhost:3000/task/all')
-        .then(res => res.json())
-        .then(data => showUserTasks(data));
+    renderTasks();
 });
 
