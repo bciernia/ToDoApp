@@ -6,7 +6,7 @@ export const createTaskFromUserData = () => {
     const taskImportance = taskForm.elements["task-importance"].value;
 
     return {
-        "taskId": 1,
+        "taskId": 0,
         "taskName": taskName,
         "taskDesc": taskDesc,
         "taskImportance": taskImportance,
