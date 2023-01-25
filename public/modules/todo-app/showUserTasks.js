@@ -20,7 +20,5 @@ export const showUserTasks = (tasks) => {
 
         taskList.appendChild(li);
     })
-
-    return taskList;
 }
 
