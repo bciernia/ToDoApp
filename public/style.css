@@ -132,14 +132,19 @@ li {
     border: none;
 }
 
-.task-importance-background-color-high {
+.task-importance-background-color-1 {
     background-color: #f85151;
 }
 
-.task-importance-background-color-medium {
+.task-importance-background-color-2 {
     background-color: #f6bf5c;
 }
 
-.task-importance-background-color-low {
+.task-importance-background-color-3 {
     background-color: #58f558;
+}
+
+.task-is-finished{
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
 }

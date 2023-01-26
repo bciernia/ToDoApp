@@ -28,6 +28,8 @@ export const showUserTasks = (tasks) => {
             const btnRemove = createBtn('X', ["btn", "btn-remove-task"],
                 removeTaskFromList);
 
+            if(task.isTaskFinished) p.classList.add("task-is-finished");
+
             div.appendChild(p);
             div.appendChild(btnEdit);
             div.appendChild(btnRemove);
