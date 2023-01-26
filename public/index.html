@@ -12,25 +12,32 @@
     />
 </head>
 <body>
-<h1>ToDo App</h1>
+<div class="add-task-modal">
+    <div class="add-task-container">
+        <h1 style="text-align: center">ToDo App</h1>
+        <form class="new-task-from">
+            <label>Task</label>
+            <textarea class="task-name" name="task-name"></textarea>
+            <label for="task-importance">Task importance:</label>
+            <select id="task-importance" name="task-importance">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+            <button type="submit">Add new task</button>
+        </form>
+    </div>
+</div>
+<div class="main-container">
+    <button class="btn-get-tasks">Get all tasks</button>
+    <div class="current-tasks-container">
+        <h2 style="text-align: center">Active tasks</h2>
+        <ul class="current-task-list"></ul>
+    </div>
+    <button class="btn-show-modal">Show</button>
+</div>
 
-<form class="new-task-from">
-    <label>Task name</label>
-    <input type="text" class="task-name" name="task-name">
-    <label>Task description</label>
-    <textarea rows="4" cols="50" class="task-desc" name="task-desc"></textarea>
-    <label for="task-importance">Task importance:</label>
-    <select id="task-importance" name="task-importance">
-        <option value="high">High</option>
-        <option value="medium">Medium</option>
-        <option value="low">Low</option>
-    </select>
-    <button type="submit">Add new task</button>
-</form>
 
-<button class="btn-get-tasks">Get all tasks</button>
-<h2 style="text-align: center">Your tasks</h2>
-<ul class="task-list"></ul>
 <script src="index.js" type="module"></script>
 </body>
 </html>
