@@ -1,5 +1,6 @@
 import {createListRow, createDiv, createBtn, createParagraph} from "../design-system/core.js";
 import {deleteTask} from "./deleteTask.js";
+import {renderTasks} from "./getTasks.js";
 
 const taskList = document.querySelector('.current-task-list');
 
@@ -15,6 +16,7 @@ export const showUserTasks = (tasks) => {
 
             const removeTaskFromList = () => {
                 console.log(`${task.name} is deleted, ID: ${task.taskId}`);
+                renderTasks();
                 deleteTask(task.taskId);
             }
 
