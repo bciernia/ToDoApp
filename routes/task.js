@@ -39,6 +39,8 @@ taskRouter
         tasks.push(task);
 
         await writeFile('task.json', JSON.stringify(tasks), 'utf-8');
+
+        res.status(201).send("Task has been created");
     })
 
     .delete('/deleteTask/:taskId', async(req, res) =>{
@@ -49,6 +51,8 @@ taskRouter
         tasks.splice(indexOfTaskToDelete, 1);
 
         await writeFile('task.json', JSON.stringify(tasks), "utf-8");
+
+        res.status(200).send("Task has been deleted")
     })
 
 module.exports = {
