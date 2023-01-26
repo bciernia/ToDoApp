@@ -5,11 +5,9 @@ import {renderTasks} from "./modules/todo-app/getTasks.js";
 const taskForm = document.querySelector(".new-task-from");
 const btnGetTasks = document.querySelector(".btn-get-tasks");
 
-// renderTasks();
+renderTasks();
 
-taskForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
+taskForm.addEventListener('submit', async (event) => {
     const task = createTaskFromUserData();
 
     sendTaskToDb(task);

@@ -19,10 +19,10 @@ const getParsedTasksFromFile = async () => {
 
 taskRouter
 
-    .get('/task/all', async (req, res) => {
+    .get('/all', async (req, res) => {
         const tasks = await readFile('task.json', 'utf-8');
 
-        res.send(tasks);
+        res.status(200).send(tasks);
     })
 
     // .get('/task/:taskId', async(req, res) => {
@@ -32,7 +32,7 @@ taskRouter
     //     tasks[taskId-1] ? res.send(tasks[taskId-1]) : res.send("There is no task with this ID");
     // })
 
-    .post('/sendTask', async (req, res) => {
+    .post('/addTask', async (req, res) => {
         const task = req.body
         task.taskId = ++highestId;
         const tasks = await getParsedTasksFromFile();
@@ -40,10 +40,10 @@ taskRouter
 
         await writeFile('task.json', JSON.stringify(tasks), 'utf-8');
 
-        res.status(201).send("Task has been created");
+        res.status(201).send(task);
     })
 
-    .delete('/deleteTask/:taskId', async(req, res) =>{
+    .delete('/:taskId', async(req, res) =>{
         const taskToDelete = Number(req.params.taskId);
         const tasks = await getParsedTasksFromFile();
         const indexOfTaskToDelete = tasks.findIndex(element => element.taskId === taskToDelete);
@@ -52,7 +52,7 @@ taskRouter
 
         await writeFile('task.json', JSON.stringify(tasks), "utf-8");
 
-        res.status(200).send("Task has been deleted")
+        res.status(200).json({"message": "Task has been deleted"});
     })
 
 module.exports = {

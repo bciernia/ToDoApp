@@ -5,6 +5,6 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static("public"));
-app.use('/', taskRouter);
+app.use('/task', taskRouter);
 
 app.listen(3000);
