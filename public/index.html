@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>To Do App</title>
+    <title>ToDo App</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -14,27 +14,41 @@
 <body>
 <div class="add-task-modal">
     <div class="add-task-container">
-        <h1 style="text-align: center">ToDo App</h1>
+        <button class="btn btn-modal" id="btn-hide-modal"><img src="images/close.png" class="hide-modal-img"></button>
+        <h2 style="text-align: center">Add task</h2>
         <form class="new-task-from">
-            <label>Task</label>
+            <label class="new-task-label">Task</label>
             <textarea class="task-name" name="task-name"></textarea>
-            <label for="task-importance">Task importance:</label>
-            <select id="task-importance" name="task-importance">
-                <option value="1-high">High</option>
-                <option value="2-medium">Medium</option>
-                <option value="3-low">Low</option>
-            </select>
-            <button type="submit">Add new task</button>
+            <label class="new-task-label">Task importance</label>
+            <div class="task-importance-section">
+                <div>
+                    <input type="radio" id="low" name="task-importance" value="3-low">
+                    <label for="low">Low</label>
+                </div>
+                <div>
+                    <input type="radio" id="medium" name="task-importance" value="2-medium" checked>
+                    <label for="medium">Medium</label>
+                </div>
+                <div>
+                    <input type="radio" id="high" name="task-importance" value="1-high">
+                    <label for="high">High</label>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <button type="submit" class="btn btn-add-task"><img src="images/add.png" alt="Add button"
+                                                                    class="add-task-img"></button>
+            </div>
         </form>
     </div>
 </div>
 <div class="main-container">
-    <button class="btn-get-tasks">Get all tasks</button>
     <div class="current-tasks-container">
-        <h2 style="text-align: center">Active tasks</h2>
+        <h1 class="main-container-info" style="text-align: center">Your tasks</h1>
         <ul class="current-task-list"></ul>
+        <object class="no-tasks-gif" data="images/notasks.gif"></object>
     </div>
-    <button class="btn btn-show-modal"><img src="images/add.png" alt="Add button" class="add-task-img"></button>
+    <button class="btn btn-modal btn-show-modal" id="btn-show-modal"><img src="images/add.png" alt="Add button"
+                                                                          class="add-task-img"></button>
 </div>
 
 
