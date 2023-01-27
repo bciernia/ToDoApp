@@ -1,4 +1,4 @@
-import {createListRow, createDiv, createBtn, createParagraph} from "../design-system/core.js";
+import {createListRow, createDiv, createBtnWithImg, createParagraph} from "../design-system/core.js";
 import {deleteTask} from "./deleteTask.js";
 import {putTask} from "./putTask.js";
 
@@ -44,13 +44,13 @@ export const showUserTasks = (tasks) => {
             const li = createListRow([]);
             const div = createDiv(["task"]);
             const p = createParagraph(task.taskName, []);
-            const btnEdit = createBtn('images/edit.png', ["btn", "btn-edit-task"],
+            const btnEdit = createBtnWithImg('images/edit.png', ["btn", "btn-edit-task"],
                 editChosenTask);
-            const btnActivateTask = createBtn('images/refresh.png', ["btn", "btn-edit-task"],
+            const btnActivateTask = createBtnWithImg('images/refresh.png', ["btn", "btn-edit-task"],
                 activateTask);
-            const btnRemove = createBtn('images/trash.png', ["btn", "btn-remove-task"],
+            const btnRemove = createBtnWithImg('images/trash.png', ["btn", "btn-remove-task"],
                 removeTask);
-            const btnCheckTask = createBtn('images/check.png', ["btn", "btn-remove-task"],
+            const btnCheckTask = createBtnWithImg('images/check.png', ["btn", "btn-remove-task"],
                 checkTask);
 
             task.isTaskFinished ? div.classList.add(`task-importance-background-color-4-finished`)
