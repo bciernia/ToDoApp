@@ -77,8 +77,8 @@ li {
     font-size: 1.5rem;
     border: none;
     cursor: pointer;
-    width: 2rem;
-    height: 2rem;
+    width: 2.25rem;
+    height: 2.25rem;
     transition: background-color .3s ease-in-out;
     border-radius: 50px;
 }
@@ -90,6 +90,10 @@ li {
 
 .btn-show-modal{
     position: absolute;
+    top: 1rem;
+    left: 1rem;
+    height: 4rem;
+    width: 4rem;
 }
 
 .current-task-list {
@@ -101,7 +105,6 @@ li {
     padding: 1rem 0;
     height: 85%;
     overflow-y: auto;
-    scrollbar-width: thin;
 }
 
 .task {
@@ -149,5 +152,13 @@ li {
 
 .task-is-finished{
     text-decoration: line-through;
-    text-decoration-thickness: 3px;
+    text-decoration-thickness: 1px;
+}
+
+.btn-img{
+    width: 1.225rem;
+}
+
+.add-task-img{
+    width: 3rem;
 }
