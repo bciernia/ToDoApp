@@ -5,18 +5,17 @@
 }
 
 :root {
-    --backgroundColorModals: #2b2b2b54;
-    --firstColor: #1b40f3;
-    --secondColor: #00e4ff;
-    --acceptButtonColor: #00770a;
-    --cancelButtonColor: #7a0000;
+    --headerColor: #FCECDD;
+    --mainColor: #FFC288;
+    --modalColor: #FEA82F;
+    --footerColor: #FF6701;
 }
 
 body {
     font-family: "Montserrat", sans-serif;
     display: flex;
     justify-content: center;
-    background: rgb(246, 173, 173);
+    background: var(--mainColor);
 }
 
 .add-task-modal{
@@ -24,7 +23,7 @@ body {
     margin-top: 1rem;
     height: 30rem;
     width: 50rem;
-    background-color: #1b40f3;
+    background-color: var(--modalColor);
     top:-35rem;
     transition: transform .75s ease-in-out;
 }
@@ -132,16 +131,20 @@ li {
     border: none;
 }
 
-.task-importance-background-color-1 {
+.task-importance-background-color-1-high {
     background-color: #f85151;
 }
 
-.task-importance-background-color-2 {
+.task-importance-background-color-2-medium {
     background-color: #f6bf5c;
 }
 
-.task-importance-background-color-3 {
+.task-importance-background-color-3-low {
     background-color: #58f558;
+}
+
+.task-importance-background-color-4-finished {
+    background-color: cadetblue;
 }
 
 .task-is-finished{
