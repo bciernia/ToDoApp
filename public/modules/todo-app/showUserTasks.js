@@ -15,8 +15,6 @@ export const showUserTasks = (tasks) => {
             }
 
             const removeTaskFromList = () => {
-                console.log(`${task.name} is deleted, ID: ${task.taskId}`);
-                renderTasks();
                 deleteTask(task.taskId);
             }
 
