@@ -1,8 +1,13 @@
-export const createBtn = (text, additionalClasses, onClickHandler) => {
+export const createBtn = (icon, additionalClasses, onClickHandler) => {
     const btn = document.createElement('button');
+    const img = document.createElement('img');
+    img.src = icon;
+
+    img.classList.add('btn-img')
+    btn.appendChild(img);
 
     btn.classList.add(...additionalClasses);
-    btn.textContent = text;
+
     btn.addEventListener('click', onClickHandler);
 
     return btn;
