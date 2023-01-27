@@ -22,14 +22,23 @@ body {
     position: absolute;
     margin-top: 1rem;
     height: 30rem;
-    width: 50rem;
+    width: 30rem;
     background-color: var(--modalColor);
+    border-radius: 10px;
     top:-35rem;
+    left: 1rem;
     transition: transform .75s ease-in-out;
+    z-index: 999;
+    box-shadow: 0px 0px 7px 1px rgba(66, 68, 90, 1);
 }
 
 .add-task-modal-active{
     transform: translateY(35rem);
+}
+
+.new-task-label{
+    font-size: 1.25rem;
+    text-align: center;
 }
 
 .add-task-container {
@@ -37,9 +46,14 @@ body {
     margin: 1.5rem;
 }
 
+.task-importance-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 .main-container {
     width: 50rem;
-    color: whitesmoke;
 }
 
 .task-container {
@@ -47,11 +61,12 @@ body {
 }
 
 .new-task-from {
-    margin: 1rem auto;
-    width: 100%;
+    margin: 1rem;
+    width: auto;
     height: 20rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 1rem;
 }
 
@@ -88,12 +103,36 @@ li {
     border-radius: 50px;
 }
 
-.btn-show-modal{
+.btn-modal{
     position: absolute;
     top: 1rem;
     left: 1rem;
+    height: 2rem;
+    width: 2rem;
+}
+
+.btn-show-modal{
     height: 4rem;
     width: 4rem;
+}
+
+.btn-add-task{
+    height: 4rem;
+    width: 4rem;
+}
+
+.current-tasks-container{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.no-tasks-gif{
+    height: 30rem;
+    width: 25rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 7px 1px rgba(66, 68, 90, 1);
 }
 
 .current-task-list {
@@ -160,5 +199,9 @@ li {
 }
 
 .add-task-img{
-    width: 3rem;
+    width: 2.5rem;
+}
+
+.hide-modal-img{
+    width: 1rem;
 }

@@ -4,8 +4,21 @@ import {putTask} from "./putTask.js";
 
 const taskList = document.querySelector('.current-task-list');
 
+const showHeaderText = (arrayLength) => {
+    if (arrayLength === 0) {
+        document.querySelector('.main-container-info').innerText = "Hooray! You don't have any tasks to do!";
+        document.querySelector('.no-tasks-gif').style.display = 'block';
+    } else {
+        document.querySelector('.main-container-info').innerText = "Your tasks";
+        document.querySelector('.no-tasks-gif').style.display = 'none';
+    }
+
+}
+
 export const showUserTasks = (tasks) => {
     taskList.innerText = "";
+
+    showHeaderText(tasks.length);
 
     tasks.sort((taskA, taskB) => (taskA.taskImportance > taskB.taskImportance) ? 1 : -1)
         .forEach(task => {
@@ -21,7 +34,6 @@ export const showUserTasks = (tasks) => {
 
             const checkTask = () => {
                 task.isTaskFinished = true;
-                task.taskImportance = '4-finished';
                 putTask(task);
             }
 
@@ -30,7 +42,7 @@ export const showUserTasks = (tasks) => {
             }
 
             const li = createListRow([]);
-            const div = createDiv(["task", `task-importance-background-color-${task.taskImportance}`]);
+            const div = createDiv(["task"]);
             const p = createParagraph(task.taskName, []);
             const btnEdit = createBtn('images/edit.png', ["btn", "btn-edit-task"],
                 editChosenTask);
@@ -40,6 +52,9 @@ export const showUserTasks = (tasks) => {
                 removeTask);
             const btnCheckTask = createBtn('images/check.png', ["btn", "btn-remove-task"],
                 checkTask);
+
+            task.isTaskFinished ? div.classList.add(`task-importance-background-color-4-finished`)
+                : div.classList.add(`task-importance-background-color-${task.taskImportance}`);
 
             div.appendChild(p);
 
