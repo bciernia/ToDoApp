@@ -32,6 +32,19 @@ taskRouter
     //     tasks[taskId-1] ? res.send(tasks[taskId-1]) : res.send("There is no task with this ID");
     // })
 
+    .put('/:taskId', async (req, res) => {
+        const tasks = await getParsedTasksFromFile();
+        const newTask = req.body;
+        const taskId = Number(req.params.taskId);
+        const taskIndexToChange = tasks.findIndex(element => element.taskId === taskId);
+
+        tasks[taskIndexToChange] = newTask;
+
+        await writeFile('task.json', JSON.stringify(tasks), 'utf-8');
+
+        res.status(201).send(tasks);
+    })
+
     .post('/addTask', async (req, res) => {
         const task = req.body
         const tasks = await getParsedTasksFromFile();
