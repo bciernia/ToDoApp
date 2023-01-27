@@ -1,4 +1,4 @@
-export const postData = (url, item) => {
+export const postData = (url, item, onPostHandler) => {
     fetch(url, {
         method: "POST",
         headers: {
@@ -9,6 +9,7 @@ export const postData = (url, item) => {
         .then(res => res.json())
         .then((data) => {
             console.log('Success:', data);
+            onPostHandler(data);
         })
         .catch((error) => {
             console.error('Error:', error);

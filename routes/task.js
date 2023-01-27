@@ -34,13 +34,13 @@ taskRouter
 
     .post('/addTask', async (req, res) => {
         const task = req.body
-        task.taskId = ++highestId;
         const tasks = await getParsedTasksFromFile();
+        task.taskId = ++highestId;
         tasks.push(task);
 
         await writeFile('task.json', JSON.stringify(tasks), 'utf-8');
 
-        res.status(201).send(task);
+        res.status(201).send(tasks);
     })
 
     .delete('/:taskId', async(req, res) =>{
@@ -52,7 +52,7 @@ taskRouter
 
         await writeFile('task.json', JSON.stringify(tasks), "utf-8");
 
-        res.status(200).json({"message": "Task has been deleted"});
+        res.status(200).send(tasks);
     })
 
 module.exports = {

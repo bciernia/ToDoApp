@@ -1,4 +1,4 @@
-export const deleteData = (url) => {
+export const deleteData = (url, onDeleteHandler) => {
     fetch(url, {
         method: "DELETE",
         headers: {
@@ -8,6 +8,7 @@ export const deleteData = (url) => {
         .then(res => res.json())
         .then((data) => {
             console.log('Success:', data);
+            onDeleteHandler(data);
         })
         .catch((error) => {
             console.error('Error:', error);
