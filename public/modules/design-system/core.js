@@ -1,4 +1,4 @@
-export const createBtn = (icon, additionalClasses, onClickHandler) => {
+export const createBtnWithImg = (icon, additionalClasses, onClickHandler) => {
     const btn = document.createElement('button');
     const img = document.createElement('img');
     img.src = icon;
@@ -12,6 +12,15 @@ export const createBtn = (icon, additionalClasses, onClickHandler) => {
 
     return btn;
 };
+
+export const createInput = (additionalClasses) => {
+    const input = document.createElement('input');
+
+    input.type="text";
+    input.classList.add(...additionalClasses);
+
+    return input;
+}
 
 export const createImg = (src, alt, additionalClasses) => {
     const img = document.createElement('img');
