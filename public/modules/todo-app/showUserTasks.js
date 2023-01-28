@@ -30,11 +30,13 @@ export const showUserTasks = (tasks) => {
             const input = createInput(task.taskName, []);
 
             const editChosenTask = () => {
+                input.value = task.taskName;
                 div.insertBefore(input, div.firstChild);
                 div.removeChild(p);
                 div.removeChild(btnCheckTask);
                 div.removeChild(btnEdit);
                 div.appendChild(btnAcceptEditedTask);
+                div.appendChild(btnRevertEditedTask);
             }
 
             const acceptEditedTask = () => {
@@ -43,10 +45,20 @@ export const showUserTasks = (tasks) => {
                 div.insertBefore(p, div.firstChild);
                 div.removeChild(input);
                 div.removeChild(btnAcceptEditedTask);
+                div.removeChild(btnRevertEditedTask);
                 div.appendChild(btnEdit);
                 div.appendChild(btnCheckTask);
 
-                putTask(task);
+                task.taskName === "" ? deleteTask(task.taskId) : putTask(task);
+            }
+
+            const revertChanges = () => {
+                div.insertBefore(p, div.firstChild);
+                div.removeChild(input);
+                div.removeChild(btnAcceptEditedTask);
+                div.removeChild(btnRevertEditedTask);
+                div.appendChild(btnEdit);
+                div.appendChild(btnCheckTask);
             }
 
             const activateTask = () => {
@@ -63,6 +75,8 @@ export const showUserTasks = (tasks) => {
                 deleteTask(task.taskId);
             }
 
+
+
             const btnEdit = createBtnWithImg('images/edit.png', ["btn", "btn-edit-task"],
                 editChosenTask);
             const btnActivateTask = createBtnWithImg('images/refresh.png', ["btn", "btn-edit-task"],
@@ -71,8 +85,10 @@ export const showUserTasks = (tasks) => {
                 removeTask);
             const btnCheckTask = createBtnWithImg('images/check.png', ["btn", "btn-remove-task"],
                 checkTask);
-            const btnAcceptEditedTask = createBtnWithImg('images/close.png', ["btn", "btn-remove-task"],
+            const btnAcceptEditedTask = createBtnWithImg('images/check.png', ["btn", "btn-edit-task"],
                 acceptEditedTask);
+            const btnRevertEditedTask = createBtnWithImg('images/close.png', ["btn", "btn-remove-task"],
+                revertChanges)
 
             task.isTaskFinished ? div.classList.add(`task-importance-background-color-4-finished`)
                 : div.classList.add(`task-importance-background-color-${task.taskImportance}`);
