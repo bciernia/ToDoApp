@@ -13,10 +13,11 @@ export const createBtnWithImg = (icon, additionalClasses, onClickHandler) => {
     return btn;
 };
 
-export const createInput = (additionalClasses) => {
+export const createInput = (value, additionalClasses) => {
     const input = document.createElement('input');
 
     input.type="text";
+    input.value = value;
     input.classList.add(...additionalClasses);
 
     return input;
