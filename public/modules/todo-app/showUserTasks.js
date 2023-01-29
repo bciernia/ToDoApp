@@ -19,7 +19,6 @@ export const showUserTasks = (tasks) => {
 
     tasks.sort((taskA, taskB) => (taskA.taskImportance > taskB.taskImportance) ? 1 : -1)
         .forEach(task => {
-            let isTaskInEditMode = false;
             const div = createDiv(["task"]);
             const p = createParagraph(task.taskName, ["task-name-display" ]);
             const li = createListRow([]);
@@ -103,7 +102,8 @@ export const showUserTasks = (tasks) => {
                 : div.classList.add(`task-importance-background-color-${task.taskImportance}`);
 
             div.appendChild(p);
-            div.appendChild(btnDeadLine);
+
+            if(task.isTaskDeadlineAvailable) div.appendChild(btnDeadLine);
 
             if (task.isTaskFinished) {
                 p.classList.add("task-is-finished");
