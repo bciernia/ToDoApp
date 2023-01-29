@@ -14,8 +14,10 @@ const showHeaderText = (arrayLength) => {
     }
 }
 
-export const showUserTasks = (tasks) => {
+export const showUserTasks = async (tasks) => {
     taskList.innerText = "";
+
+    showHeaderText(tasks.length);
 
     tasks.sort((taskA, taskB) => (taskA.taskImportance > taskB.taskImportance) ? 1 : -1)
         .forEach(task => {
@@ -114,6 +116,6 @@ export const showUserTasks = (tasks) => {
             li.appendChild(div);
             taskList.appendChild(li);
         })
-    showHeaderText(tasks.length);
+
 }
 
