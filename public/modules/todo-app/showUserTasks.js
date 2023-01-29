@@ -21,9 +21,12 @@ export const showUserTasks = (tasks) => {
         .forEach(task => {
             let isTaskInEditMode = false;
             const div = createDiv(["task"]);
-            const p = createParagraph(task.taskName, []);
+            const p = createParagraph(task.taskName, ["task-name-display" ]);
             const li = createListRow([]);
             const input = createInput(task.taskName, []);
+            const date = createParagraph(`Deadline: ${task.taskDeadline}`, []);
+
+            date.classList.add("tooltip");
 
             /*
             * Buttons methods
@@ -74,6 +77,10 @@ export const showUserTasks = (tasks) => {
                 deleteTask(task.taskId);
             }
 
+            const showTaskDeadline = () => {
+                date.classList.toggle("tooltip-shown");
+            }
+
 
             const btnEdit = createBtnWithImg('images/edit.png', ["btn", "btn-edit-task"],
                 editChosenTask);
@@ -87,11 +94,16 @@ export const showUserTasks = (tasks) => {
                 acceptEditedTask);
             const btnRevertEditedTask = createBtnWithImg('images/close.png', ["btn", "btn-remove-task"],
                 revertChanges)
+            const btnDeadLine = createBtnWithImg('images/calendar.png', ["btn", "btn-deadline-task"],
+                showTaskDeadline);
+
+            btnDeadLine.appendChild(date);
 
             task.isTaskFinished ? div.classList.add(`task-importance-background-color-4-finished`)
                 : div.classList.add(`task-importance-background-color-${task.taskImportance}`);
 
             div.appendChild(p);
+            div.appendChild(btnDeadLine);
 
             if (task.isTaskFinished) {
                 p.classList.add("task-is-finished");
