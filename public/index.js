@@ -7,7 +7,8 @@ const showModal = document.querySelector('#btn-show-modal');
 const hideModal = document.querySelector('#btn-hide-modal');
 const addTaskModal = document.querySelector('.add-task-modal');
 const taskDeadlineCheckbox = document.querySelector("#task-deadline-confirm");
-
+const btnSidebarTransition = document.querySelector(".btn-hide");
+const sidebarSection = document.querySelector(".sidebar");
 renderTasks();
 
 taskForm.addEventListener('submit', (event) => {
@@ -33,3 +34,7 @@ hideModal.addEventListener('click', () => {
     taskForm.querySelector('.new-task-datepicker').disabled = true;
     addTaskModal.classList.toggle('add-task-modal-active');
 })
+
+btnSidebarTransition.addEventListener('click', () => {
+    sidebarSection.classList.toggle('sidebar-active');
+});
