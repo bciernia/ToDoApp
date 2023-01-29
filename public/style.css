@@ -195,7 +195,7 @@ li {
 
 .task-is-finished {
     text-decoration: line-through;
-    text-decoration-thickness: 1px;
+    text-decoration-thickness: 2px;
 }
 
 .btn-img {
