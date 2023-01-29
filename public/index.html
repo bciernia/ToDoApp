@@ -17,23 +17,32 @@
         <button class="btn btn-modal" id="btn-hide-modal"><img src="images/close.png" class="hide-modal-img"></button>
         <h2 style="text-align: center">Add task</h2>
         <form class="new-task-from">
-            <label class="new-task-label">Task</label>
-            <textarea class="task-name" name="task-name"></textarea>
-            <label class="new-task-label">Task importance</label>
-            <div class="task-importance-section">
-                <div>
-                    <input type="radio" id="low" name="task-importance" value="3-low">
-                    <label for="low">Low</label>
-                </div>
-                <div>
-                    <input type="radio" id="medium" name="task-importance" value="2-medium" checked>
-                    <label for="medium">Medium</label>
-                </div>
-                <div>
-                    <input type="radio" id="high" name="task-importance" value="1-high">
-                    <label for="high">High</label>
+            <div class="new-task-form-section">
+                <label class="new-task-label">Task</label>
+                <textarea class="task-name" name="task-name"></textarea>
+            </div>
+            <div class="new-task-form-section">
+                <label class="new-task-label">Task deadline</label>
+                <input type="date" class="new-task-datepicker">
+            </div>
+            <div class="new-task-form-section">
+                <label class="new-task-label">Task importance</label>
+                <div class="task-importance-section">
+                    <div>
+                        <input type="radio" id="low" name="task-importance" value="3-low">
+                        <label for="low">Low</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="medium" name="task-importance" value="2-medium" checked>
+                        <label for="medium">Medium</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="high" name="task-importance" value="1-high">
+                        <label for="high">High</label>
+                    </div>
                 </div>
             </div>
+
             <div style="display: flex; justify-content: center;">
                 <button type="submit" class="btn btn-add-task"><img src="images/add.png" alt="Add button"
                                                                     class="add-task-img"></button>
