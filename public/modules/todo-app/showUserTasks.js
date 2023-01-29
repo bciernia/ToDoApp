@@ -5,7 +5,6 @@ import {putTask} from "./putTask.js";
 const taskList = document.querySelector('.current-task-list');
 
 const showHeaderText = (arrayLength) => {
-    //TODO Ricky is synchronous that's why we can see him on load page
     if (arrayLength === 0) {
         document.querySelector('.main-container-info').innerText = "Hooray! You don't have any tasks to do!";
         document.querySelector('.no-tasks-gif').style.display = 'block';
@@ -18,9 +17,6 @@ const showHeaderText = (arrayLength) => {
 export const showUserTasks = (tasks) => {
     taskList.innerText = "";
 
-    showHeaderText(tasks.length);
-
-    //TODO SORT BY ID, THEN IMPORTANCE
     tasks.sort((taskA, taskB) => (taskA.taskImportance > taskB.taskImportance) ? 1 : -1)
         .forEach(task => {
             let isTaskInEditMode = false;
@@ -108,5 +104,6 @@ export const showUserTasks = (tasks) => {
             li.appendChild(div);
             taskList.appendChild(li);
         })
+    showHeaderText(tasks.length);
 }
 
