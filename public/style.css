@@ -147,7 +147,7 @@ li {
 .task {
     position: relative;
     display: grid;
-    grid-template-columns: 7fr 1fr 1fr 1fr;
+    grid-template-columns: 12fr 1fr 1fr 1fr;
     margin: .75rem .25rem;
     padding: 1rem .5rem;
     justify-items: center;
@@ -219,10 +219,11 @@ li {
     opacity: 0;
     padding: .125rem .375rem;
     top:-.25rem;
-    right: 6rem;
+    right: 3.125rem;
+    transition: opacity 0.25s ease-in-out;
 }
 
-.tooltip-shown{
+.btn-deadline-task:hover .tooltip{
     opacity: 1;
     z-index: 100;
 }
