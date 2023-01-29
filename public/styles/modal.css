@@ -50,6 +50,8 @@
 
 .new-task-datepicker {
     height: 2rem;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
 }
 
 .task-name {
@@ -63,4 +65,8 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
+}
+
+.task-deadline-checkbox{
+    text-align: center;
 }
