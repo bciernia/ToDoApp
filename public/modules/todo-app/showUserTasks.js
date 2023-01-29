@@ -39,7 +39,6 @@ export const showUserTasks = (tasks) => {
                 div.appendChild(btnAcceptEditedTask);
                 div.appendChild(btnRevertEditedTask);
             }
-
             const acceptEditedTask = () => {
                 task.taskName = input.value;
 
@@ -52,7 +51,6 @@ export const showUserTasks = (tasks) => {
 
                 task.taskName === "" ? deleteTask(task.taskId) : putTask(task);
             }
-
             const revertChanges = () => {
                 div.insertBefore(p, div.firstChild);
                 div.removeChild(input);
@@ -61,21 +59,17 @@ export const showUserTasks = (tasks) => {
                 div.appendChild(btnEdit);
                 div.appendChild(btnCheckTask);
             }
-
             const activateTask = () => {
                 task.isTaskFinished = false;
                 putTask(task);
             }
-
             const checkTask = () => {
                 task.isTaskFinished = true;
                 putTask(task);
             }
-
             const removeTask = () => {
                 deleteTask(task.taskId);
             }
-
             const showTaskDeadline = () => {
                 date.classList.toggle("tooltip-shown");
             }
@@ -107,10 +101,12 @@ export const showUserTasks = (tasks) => {
 
             if (task.isTaskFinished) {
                 p.classList.add("task-is-finished");
+                btnDeadLine.style.display='none';
                 div.appendChild(btnActivateTask);
                 div.appendChild(btnRemove);
             } else {
                 p.classList.remove("task-is-finished");
+                btnDeadLine.style.display='block';
                 div.appendChild(btnEdit);
                 div.appendChild(btnCheckTask);
             }
