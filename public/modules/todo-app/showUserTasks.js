@@ -25,6 +25,9 @@ export const showUserTasks = (tasks) => {
             const li = createListRow([]);
             const input = createInput(task.taskName, []);
 
+            /*
+            * Buttons methods
+            * */
             const editChosenTask = () => {
                 input.value = task.taskName;
                 div.insertBefore(input, div.firstChild);
@@ -70,7 +73,6 @@ export const showUserTasks = (tasks) => {
             const removeTask = () => {
                 deleteTask(task.taskId);
             }
-
 
 
             const btnEdit = createBtnWithImg('images/edit.png', ["btn", "btn-edit-task"],

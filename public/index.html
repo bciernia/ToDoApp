@@ -18,12 +18,16 @@
         <h2 style="text-align: center">Add task</h2>
         <form class="new-task-from">
             <div class="new-task-form-section">
-                <label class="new-task-label">Task</label>
-                <textarea class="task-name" name="task-name"></textarea>
+                <label class="new-task-label" for="task-name">Task</label>
+                <textarea id="task-name" class="task-name" name="task-name"></textarea>
             </div>
             <div class="new-task-form-section">
-                <label class="new-task-label">Task deadline</label>
-                <input type="date" class="new-task-datepicker">
+                <label class="new-task-label" for="task-deadline">Task deadline</label>
+                <input id="task-deadline" type="date" class="new-task-datepicker" name="task-deadline" disabled="disabled">
+                <div>
+                    <input id="task-deadline-confirm" type="checkbox" name="task-deadline-confirm">
+                    <label for="task-deadline-confirm">Add deadline to new task</label>
+                </div>
             </div>
             <div class="new-task-form-section">
                 <label class="new-task-label">Task importance</label>
