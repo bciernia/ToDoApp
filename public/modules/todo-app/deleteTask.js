@@ -1,6 +1,8 @@
-import {deleteData} from "../design-system/deleteData.js";
 import {showUserTasks} from "./showUserTasks.js";
+import {deleteJSONData} from "../core/fetchJSON.js";
 
-export const deleteTask = (taskId) => {
-    deleteData(`http://localhost:3000/task/${taskId}`, showUserTasks);
+export const deleteTask = async (taskId) => {
+    const tasks = await deleteJSONData({url: `http://localhost:3000/task/${taskId}`});
+
+    showUserTasks(tasks);
 }

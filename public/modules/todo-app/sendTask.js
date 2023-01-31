@@ -1,8 +1,10 @@
-import {postData} from "../design-system/postData.js";
 import {showUserTasks} from "./showUserTasks.js";
+import {postJSONData} from "../core/fetchJSON.js";
 
-export const sendTaskToDb = (task) => {
+export const sendTaskToDb = async (task) => {
     if(task.taskName === "") return;
 
-    postData('http://localhost:3000/task/addTask', task, showUserTasks);
+    const tasks = await postJSONData({url: `http://localhost:3000/task/addTask`, body: task});
+
+    showUserTasks(tasks);
 }
