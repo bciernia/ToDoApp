@@ -1,4 +1,4 @@
-export const createBtnWithImg = (icon, additionalClasses, onClickHandler) => {
+export const createBtnWithImg = (icon, additionalClasses = [], onClickHandler) => {
     const btn = document.createElement('button');
     const img = document.createElement('img');
     img.src = icon;
@@ -13,7 +13,7 @@ export const createBtnWithImg = (icon, additionalClasses, onClickHandler) => {
     return btn;
 };
 
-export const createInput = (value, additionalClasses) => {
+export const createInput = (value, additionalClasses = []) => {
     const input = document.createElement('input');
 
     input.type="text";
@@ -23,7 +23,7 @@ export const createInput = (value, additionalClasses) => {
     return input;
 }
 
-export const createImg = (src, alt, additionalClasses) => {
+export const createImg = (src, alt, additionalClasses = []) => {
     const img = document.createElement('img');
 
     img.src = src;
@@ -78,7 +78,7 @@ export const createLabel = (inputName) => {
     return label;
 };
 
-export const createListRow = (additionalClasses) => {
+export const createListRow = (additionalClasses = []) => {
     const li = document.createElement('li');
 
     li.classList.add(...additionalClasses);
@@ -86,7 +86,7 @@ export const createListRow = (additionalClasses) => {
     return li;
 }
 
-export const createUnorderedList = (additionalClasses) => {
+export const createUnorderedList = (additionalClasses = []) => {
     const ul = document.createElement('ul');
 
     ul.classList.add(...additionalClasses);

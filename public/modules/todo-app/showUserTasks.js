@@ -20,60 +20,60 @@ export const showUserTasks = (tasks) => {
     showHeaderText(tasks.length);
 
     tasks.sort((taskA, taskB) => (taskA.taskImportance > taskB.taskImportance) ? 1 : -1)
-        .forEach(task => {
-            const div = createDiv(["task"]);
-            const p = createParagraph(task.taskName, ["task-name-display"]);
-            const li = createListRow([]);
-            const input = createInput(task.taskName);
-            const date = createParagraph(`Deadline: ${task.taskDeadline}`, []);
+        .forEach(arrayItem => {
+            const task = createDiv(["task"]);
+            const taskName = createParagraph(arrayItem.taskName, ["task-name-display"]);
+            const tasksListRow = createListRow();
+            const editTaskNameInput = createInput(arrayItem.taskName);
+            const taskDeadline = createParagraph(`Deadline: ${arrayItem.taskDeadline}`);
 
-            date.classList.add("tooltip");
+            taskDeadline.classList.add("tooltip");
 
             /*
             * Button methods
             * */
             const editChosenTask = () => {
-                input.value = task.taskName;
-                div.insertBefore(input, div.firstChild);
-                div.removeChild(p);
-                div.removeChild(btnCheckTask);
-                div.removeChild(btnEdit);
-                div.appendChild(btnAcceptEditedTask);
-                div.appendChild(btnRevertEditedTask);
+                editTaskNameInput.value = arrayItem.taskName;
+                task.insertBefore(editTaskNameInput, task.firstChild);
+                task.removeChild(taskName);
+                task.removeChild(btnCheckTask);
+                task.removeChild(btnEdit);
+                task.appendChild(btnAcceptEditedTask);
+                task.appendChild(btnRevertEditedTask);
             }
             const acceptEditedTask = () => {
-                task.taskName = input.value;
+                arrayItem.taskName = editTaskNameInput.value;
 
-                div.insertBefore(p, div.firstChild);
-                div.removeChild(input);
-                div.removeChild(btnAcceptEditedTask);
-                div.removeChild(btnRevertEditedTask);
-                div.appendChild(btnEdit);
-                div.appendChild(btnCheckTask);
+                task.insertBefore(taskName, task.firstChild);
+                task.removeChild(editTaskNameInput);
+                task.removeChild(btnAcceptEditedTask);
+                task.removeChild(btnRevertEditedTask);
+                task.appendChild(btnEdit);
+                task.appendChild(btnCheckTask);
 
-                task.taskName === "" ? deleteTask(task.taskId) : putTask(task);
+                arrayItem.taskName === "" ? deleteTask(arrayItem.taskId) : putTask(arrayItem);
             }
             const revertChanges = () => {
-                div.insertBefore(p, div.firstChild);
-                div.removeChild(input);
-                div.removeChild(btnAcceptEditedTask);
-                div.removeChild(btnRevertEditedTask);
-                div.appendChild(btnEdit);
-                div.appendChild(btnCheckTask);
+                task.insertBefore(taskName, task.firstChild);
+                task.removeChild(editTaskNameInput);
+                task.removeChild(btnAcceptEditedTask);
+                task.removeChild(btnRevertEditedTask);
+                task.appendChild(btnEdit);
+                task.appendChild(btnCheckTask);
             }
             const activateTask = () => {
-                task.isTaskFinished = false;
-                putTask(task);
+                arrayItem.isTaskFinished = false;
+                putTask(arrayItem);
             }
             const checkTask = () => {
-                task.isTaskFinished = true;
-                putTask(task);
+                arrayItem.isTaskFinished = true;
+                putTask(arrayItem);
             }
             const removeTask = () => {
-                deleteTask(task.taskId);
+                deleteTask(arrayItem.taskId);
             }
             const showTaskDeadline = () => {
-                date.classList.toggle("tooltip-shown");
+                taskDeadline.classList.toggle("tooltip-shown");
             }
 
             const btnEdit = createBtnWithImg('images/edit.png', ["btn", "btn-edit-task"],
@@ -91,28 +91,28 @@ export const showUserTasks = (tasks) => {
             const btnDeadLine = createBtnWithImg('images/calendar.png', ["btn", "btn-deadline-task"],
                 showTaskDeadline);
 
-            btnDeadLine.appendChild(date);
+            btnDeadLine.appendChild(taskDeadline);
 
-            task.isTaskFinished ? div.classList.add(`task-importance-background-color-4-finished`)
-                : div.classList.add(`task-importance-background-color-${task.taskImportance}`);
+            arrayItem.isTaskFinished ? task.classList.add(`task-importance-background-color-4-finished`)
+                : task.classList.add(`task-importance-background-color-${arrayItem.taskImportance}`);
 
-            div.appendChild(p);
+            task.appendChild(taskName);
 
-            if (task.isTaskDeadlineAvailable) div.appendChild(btnDeadLine);
+            if (arrayItem.isTaskDeadlineAvailable) task.appendChild(btnDeadLine);
 
-            if (task.isTaskFinished) {
-                p.classList.add("task-is-finished");
+            if (arrayItem.isTaskFinished) {
+                taskName.classList.add("task-is-finished");
                 btnDeadLine.style.display = 'none';
-                div.appendChild(btnActivateTask);
-                div.appendChild(btnRemove);
+                task.appendChild(btnActivateTask);
+                task.appendChild(btnRemove);
             } else {
-                p.classList.remove("task-is-finished");
+                taskName.classList.remove("task-is-finished");
                 btnDeadLine.style.display = 'block';
-                div.appendChild(btnEdit);
-                div.appendChild(btnCheckTask);
+                task.appendChild(btnEdit);
+                task.appendChild(btnCheckTask);
             }
 
-            li.appendChild(div);
-            taskList.appendChild(li);
+            tasksListRow.appendChild(task);
+            taskList.appendChild(tasksListRow);
         })
 }
