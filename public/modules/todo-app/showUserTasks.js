@@ -1,4 +1,4 @@
-import {createListRow, createDiv, createBtnWithImg, createParagraph, createInput} from "../design-system/core.js";
+import {createListRow, createDiv, createBtnWithImg, createParagraph, createInput} from "../core/domManager.js";
 import {deleteTask} from "./deleteTask.js";
 import {putTask} from "./putTask.js";
 
@@ -14,7 +14,7 @@ const showHeaderText = (arrayLength) => {
     }
 }
 
-export const showUserTasks = async (tasks) => {
+export const showUserTasks = (tasks) => {
     taskList.innerText = "";
 
     showHeaderText(tasks.length);
@@ -22,15 +22,15 @@ export const showUserTasks = async (tasks) => {
     tasks.sort((taskA, taskB) => (taskA.taskImportance > taskB.taskImportance) ? 1 : -1)
         .forEach(task => {
             const div = createDiv(["task"]);
-            const p = createParagraph(task.taskName, ["task-name-display" ]);
+            const p = createParagraph(task.taskName, ["task-name-display"]);
             const li = createListRow([]);
-            const input = createInput(task.taskName, []);
+            const input = createInput(task.taskName);
             const date = createParagraph(`Deadline: ${task.taskDeadline}`, []);
 
             date.classList.add("tooltip");
 
             /*
-            * Buttons methods
+            * Button methods
             * */
             const editChosenTask = () => {
                 input.value = task.taskName;
@@ -76,7 +76,6 @@ export const showUserTasks = async (tasks) => {
                 date.classList.toggle("tooltip-shown");
             }
 
-
             const btnEdit = createBtnWithImg('images/edit.png', ["btn", "btn-edit-task"],
                 editChosenTask);
             const btnActivateTask = createBtnWithImg('images/refresh.png', ["btn", "btn-edit-task"],
@@ -99,16 +98,16 @@ export const showUserTasks = async (tasks) => {
 
             div.appendChild(p);
 
-            if(task.isTaskDeadlineAvailable) div.appendChild(btnDeadLine);
+            if (task.isTaskDeadlineAvailable) div.appendChild(btnDeadLine);
 
             if (task.isTaskFinished) {
                 p.classList.add("task-is-finished");
-                btnDeadLine.style.display='none';
+                btnDeadLine.style.display = 'none';
                 div.appendChild(btnActivateTask);
                 div.appendChild(btnRemove);
             } else {
                 p.classList.remove("task-is-finished");
-                btnDeadLine.style.display='block';
+                btnDeadLine.style.display = 'block';
                 div.appendChild(btnEdit);
                 div.appendChild(btnCheckTask);
             }
@@ -116,6 +115,4 @@ export const showUserTasks = async (tasks) => {
             li.appendChild(div);
             taskList.appendChild(li);
         })
-
 }
-
