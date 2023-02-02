@@ -114,7 +114,10 @@ li {
     border: none;
 }
 
-.task-importance-background-color-0-date-exceeded,
+.task-importance-background-color-0-date-exceeded{
+    background-color: red;
+}
+
 .task-importance-background-color-1-high {
     background-color: #f85151;
 }

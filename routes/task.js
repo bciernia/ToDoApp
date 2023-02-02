@@ -1,6 +1,6 @@
 const express = require('express');
 const {writeFile, readFile} = require('fs').promises;
-const {getCorrectData} = require('../backend-functions/checkUserData');
+const {setCorrectData, setDeadlineExceeded} = require('../backend-functions/checkUserData');
 
 const taskRouter = express.Router();
 
@@ -48,11 +48,11 @@ taskRouter
 
     .post('/addTask', async (req, res) => {
         const task = req.body
-        console.log(task);
         const tasks = await getParsedTasksFromFile();
         task.taskId = ++highestId;
-        task.taskDeadline = getCorrectData(task.taskDeadline);
+        if(task.taskDeadline) task.taskDeadline = setCorrectData(task.taskDeadline);
         tasks.push(task);
+        // setDeadlineExceeded(tasks);
 
         await writeFile('task.json', JSON.stringify(tasks), 'utf-8');
 

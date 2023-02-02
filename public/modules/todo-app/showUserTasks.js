@@ -25,7 +25,7 @@ export const showUserTasks = (tasks) => {
             const taskName = createParagraph(arrayItem.taskName, ["task-name-display"]);
             const tasksListRow = createListRow();
             const editTaskNameInput = createInput(arrayItem.taskName);
-            const taskDeadline = createParagraph(`Deadline: ${arrayItem.taskDeadline}`);
+            const taskDeadline = createParagraph(`Deadline: ${new Date(arrayItem.taskDeadline).toLocaleDateString()}`);
 
             taskDeadline.classList.add("tooltip");
 

@@ -1,12 +1,21 @@
+const setDeadlineExceeded = (tasks) => {
+    return tasks.map(task => {
+        const date = new Date(task.taskDeadline);
+
+        if(Date.now() >= date && task.taskDeadline !== null) task.taskImportance = '0-date-exceeded';
+    });
+}
+
 const setCorrectData = (userDeadline) => {
     const date = new Date(userDeadline);
 
     if(date >= Date.now()){
-        return date.toLocaleDateString();
+        return date;
     }
-    return new Date(Date.now()).toLocaleDateString();
+    return new Date(Date.now());
 }
 
 module.exports = {
+    setDeadlineExceeded,
     setCorrectData,
 }
