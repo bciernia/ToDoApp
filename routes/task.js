@@ -21,7 +21,11 @@ const getParsedTasksFromFile = async () => {
 taskRouter
 
     .get('/all', async (req, res) => {
-        const tasks = await readFile('task.json', 'utf-8');
+        const tasks = await getParsedTasksFromFile();
+
+        await writeFile('task.json', JSON.stringify(setDeadlineExceeded(tasks)), "utf-8");
+
+        console.log(tasks);
 
         res.status(200).send(tasks);
     })
@@ -50,9 +54,8 @@ taskRouter
         const task = req.body
         const tasks = await getParsedTasksFromFile();
         task.taskId = ++highestId;
-        if(task.taskDeadline) task.taskDeadline = setCorrectData(task.taskDeadline);
+        if(task.taskDeadline && !task.isTaskOverdue) task.taskDeadline = setCorrectData(task.taskDeadline);
         tasks.push(task);
-        // setDeadlineExceeded(tasks);
 
         await writeFile('task.json', JSON.stringify(tasks), 'utf-8');
 

@@ -76,6 +76,7 @@ export const showUserTasks = (tasks) => {
                 taskDeadline.classList.toggle("tooltip-shown");
             }
 
+
             const btnEdit = createBtnWithImg('images/edit.png', ["btn", "btn-edit-task"],
                 editChosenTask);
             const btnActivateTask = createBtnWithImg('images/refresh.png', ["btn", "btn-edit-task"],
@@ -88,15 +89,19 @@ export const showUserTasks = (tasks) => {
                 acceptEditedTask);
             const btnRevertEditedTask = createBtnWithImg('images/close.png', ["btn", "btn-remove-task"],
                 revertChanges)
+            const btnTaskOverdue = createBtnWithImg('images/overdue.png', ["btn", "btn-deadline-task"],
+                showTaskDeadline);
             const btnDeadLine = createBtnWithImg('images/calendar.png', ["btn", "btn-deadline-task"],
                 showTaskDeadline);
 
-            btnDeadLine.appendChild(taskDeadline);
+
 
             arrayItem.isTaskFinished ? task.classList.add(`task-importance-background-color-4-finished`)
                 : task.classList.add(`task-importance-background-color-${arrayItem.taskImportance}`);
 
             task.appendChild(taskName);
+
+            task.isTaskOverdue ? btnDeadLine.appendChild(taskDeadline) : btnTaskOverdue.appendChild(taskDeadline);
 
             if (arrayItem.isTaskDeadlineAvailable) task.appendChild(btnDeadLine);
 
