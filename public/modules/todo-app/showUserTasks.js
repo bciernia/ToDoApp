@@ -25,9 +25,8 @@ export const showUserTasks = (tasks) => {
             const taskName = createParagraph(arrayItem.taskName, ["task-name-display"]);
             const tasksListRow = createListRow();
             const editTaskNameInput = createInput(arrayItem.taskName);
-            const taskDeadline = createParagraph(`Deadline: ${new Date(arrayItem.taskDeadline).toLocaleDateString()}`);
-
-            taskDeadline.classList.add("tooltip");
+            const taskDeadlineParagraph = createParagraph(`Deadline: ${new Date(arrayItem.taskDeadline).toLocaleDateString()}`, ["tooltip"]);
+            const taskOverdueParagraph = createParagraph(`Overdue task`, ["tooltip"]);
 
             /*
             * Button methods
@@ -73,7 +72,10 @@ export const showUserTasks = (tasks) => {
                 deleteTask(arrayItem.taskId);
             }
             const showTaskDeadline = () => {
-                taskDeadline.classList.toggle("tooltip-shown");
+                taskDeadlineParagraph.classList.toggle("tooltip-shown");
+            }
+            const showTaskOverdueInfo = () => {
+                taskDeadlineParagraph.classList.toggle("tooltip-shown");
             }
 
 
@@ -90,20 +92,26 @@ export const showUserTasks = (tasks) => {
             const btnRevertEditedTask = createBtnWithImg('images/close.png', ["btn", "btn-remove-task"],
                 revertChanges)
             const btnTaskOverdue = createBtnWithImg('images/overdue.png', ["btn", "btn-deadline-task"],
-                showTaskDeadline);
+                showTaskOverdueInfo);
             const btnDeadLine = createBtnWithImg('images/calendar.png', ["btn", "btn-deadline-task"],
                 showTaskDeadline);
 
-
+            btnDeadLine.appendChild(taskDeadlineParagraph);
+            btnTaskOverdue.appendChild(taskOverdueParagraph);
 
             arrayItem.isTaskFinished ? task.classList.add(`task-importance-background-color-4-finished`)
                 : task.classList.add(`task-importance-background-color-${arrayItem.taskImportance}`);
 
             task.appendChild(taskName);
 
-            task.isTaskOverdue ? btnDeadLine.appendChild(taskDeadline) : btnTaskOverdue.appendChild(taskDeadline);
-
             if (arrayItem.isTaskDeadlineAvailable) task.appendChild(btnDeadLine);
+
+            if(arrayItem.isTaskOverdue){
+                task.removeChild(btnDeadLine);
+                task.appendChild(btnTaskOverdue);
+            }else{
+                task.appendChild(btnDeadLine);
+            }
 
             if (arrayItem.isTaskFinished) {
                 taskName.classList.add("task-is-finished");
