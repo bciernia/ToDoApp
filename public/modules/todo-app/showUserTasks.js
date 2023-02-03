@@ -116,11 +116,13 @@ export const showUserTasks = (tasks) => {
             if (arrayItem.isTaskFinished) {
                 taskName.classList.add("task-is-finished");
                 btnDeadLine.style.display = 'none';
+                btnTaskOverdue.style.display = 'none';
                 task.appendChild(btnActivateTask);
                 task.appendChild(btnRemove);
             } else {
                 taskName.classList.remove("task-is-finished");
                 btnDeadLine.style.display = 'block';
+                btnTaskOverdue.style.display = 'block';
                 task.appendChild(btnEdit);
                 task.appendChild(btnCheckTask);
             }
