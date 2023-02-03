@@ -81,7 +81,7 @@ li {
 .task {
     position: relative;
     display: grid;
-    grid-template-columns: 14fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 15fr 1fr 1fr 1fr;
     margin: .75rem .25rem;
     padding: 1rem .5rem;
     justify-items: center;
@@ -96,21 +96,17 @@ li {
     font-weight: bold;
 }
 
-.task-deadline-exceeded{
+.btn-deadline-task {
     grid-column: 2/3;
 }
 
-.btn-deadline-task {
-    grid-column: 3/4;
-}
-
 .btn-edit-task {
-    grid-column: 4/5;
+    grid-column: 3/4;
     border: none;
 }
 
 .btn-remove-task {
-    grid-column: 5/6;
+    grid-column: 4/5;
     border: none;
 }
 
@@ -159,9 +155,12 @@ li {
     border-radius: 10px;
     opacity: 0;
     padding: .125rem .375rem;
-    top:-.25rem;
-    right: 2rem;
+    top: 1.2rem;
+    right: 6.75rem;
     transition: opacity 0.25s ease-in-out;
+}
+
+btn-deadline-task#tooltip{
 }
 
 .btn-deadline-task:hover .tooltip{
