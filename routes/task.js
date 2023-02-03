@@ -25,8 +25,6 @@ taskRouter
 
         await writeFile('task.json', JSON.stringify(setDeadlineExceeded(tasks)), "utf-8");
 
-        console.log(tasks);
-
         res.status(200).send(tasks);
     })
 
