@@ -6,7 +6,7 @@
 
 :root {
     --headerColor: #FCECDD;
-    --mainColor: #FFC288;
+    --mainColor: #ffaf59;
     --modalColor: #FEA82F;
     --footerColor: #ffd0b4;
     --tooltipColor: #fac79c;
@@ -158,9 +158,6 @@ li {
     top: 1.2rem;
     right: 6.75rem;
     transition: opacity 0.25s ease-in-out;
-}
-
-btn-deadline-task#tooltip{
 }
 
 .btn-deadline-task:hover .tooltip{
