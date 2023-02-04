@@ -16,6 +16,7 @@ renderTasks();
 taskForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const task = createTaskFromUserData();
+
     sendTaskToDb(task);
     addTaskModal.classList.toggle('add-task-modal-active');
 })
