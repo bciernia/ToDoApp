@@ -1,6 +1,7 @@
 const express = require('express');
 const {writeFile, readFile} = require('fs').promises;
 const {setCorrectData, setDeadlineExceeded} = require('../backend-functions/checkUserData');
+const {getFilteredTasks} = require("../backend-functions/getFilteredTasks");
 
 const taskRouter = express.Router();
 
@@ -34,6 +35,15 @@ taskRouter
     //
     //     tasks[taskId-1] ? res.send(tasks[taskId-1]) : res.send("There is no task with this ID");
     // })
+
+    .get('/:tasksFilter', async (req, res) => {
+        const {tasksFilter} = req.params;
+        const tasks = await getParsedTasksFromFile();
+
+        const filteredTasks = getFilteredTasks(tasks, tasksFilter);
+
+        res.status(201).send(filteredTasks);
+    })
 
     .put('/:taskId', async (req, res) => {
         const tasks = await getParsedTasksFromFile();
