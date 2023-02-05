@@ -4,11 +4,14 @@ const getFilteredTasksByState = (tasks, filter) => {
         case "all-tasks":
             return tasks;
 
+        case "0-exceeded":
+            return tasks.filter(task => task.isTaskOverdue && !task.isTaskFinished);
+
         case "4-finished":
-            return tasks.filter(task => task.isTaskFinished === true);
+            return tasks.filter(task => task.isTaskFinished);
 
         default:
-            return tasks.filter(task => task.currentTaskImportance === filter && task.isTaskFinished === false);
+            return tasks.filter(task => task.currentTaskImportance === filter && !task.isTaskFinished);
     }
 }
 

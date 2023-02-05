@@ -115,26 +115,27 @@ export const showUserTasks = (tasks, countedTasks) => {
             btnDeadLine.appendChild(taskDeadlineParagraph);
             btnTaskOverdue.appendChild(taskOverdueParagraph);
 
-            arrayItem.isTaskFinished ? task.classList.add(`task-importance-background-color-4-finished`)
-                : task.classList.add(`task-importance-background-color-${arrayItem.currentTaskImportance}`);
-
             task.appendChild(taskName);
 
             if (arrayItem.isTaskDeadlineAvailable) task.appendChild(btnDeadLine);
 
-            if(arrayItem.isTaskOverdue){
+            if(arrayItem.isTaskOverdue && arrayItem.isTaskFinished){
                 task.removeChild(btnDeadLine);
                 task.appendChild(btnTaskOverdue);
             }
 
             if (arrayItem.isTaskFinished) {
+                arrayItem.currentTaskImportance = '4-finished';
                 taskName.classList.add("task-is-finished");
+                task.classList.add(`task-importance-background-color-4-finished`)
                 btnDeadLine.style.display = 'none';
                 btnTaskOverdue.style.display = 'none';
                 task.appendChild(btnActivateTask);
                 task.appendChild(btnRemove);
             } else {
+                arrayItem.currentTaskImportance = arrayItem.taskImportance;
                 taskName.classList.remove("task-is-finished");
+                task.classList.add(`task-importance-background-color-${arrayItem.currentTaskImportance}`)
                 btnDeadLine.style.display = 'block';
                 btnTaskOverdue.style.display = 'block';
                 task.appendChild(btnEdit);

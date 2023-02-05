@@ -2,7 +2,7 @@ const setDeadlineExceeded = (tasks) => {
     return tasks.map(task => {
         const date = new Date(task.taskDeadline);
 
-        if(Date.now() >= date && task.taskDeadline !== null) {
+        if(Date.now() >= date && task.taskDeadline !== null && !task.isTaskFinished) {
             task.taskImportance = '0-date-exceeded';
             task.currentTaskImportance = '0-date-exceeded';
             task.isTaskOverdue = true;
