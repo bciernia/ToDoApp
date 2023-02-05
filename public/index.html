@@ -20,40 +20,40 @@
     </button>
     <div class="task-counters">
         <div class="active-tasks-counters">
-            <h2 class="sidebar-header">Filter by tasks</h2>
+            <h2 class="sidebar-header">Filter by tasks state</h2>
             <div class="all-tasks-counter">
                 <div class="task-counter-section">
-                <p>Low</p>
+                    <p>Low</p>
                     <div class="task-counter task-importance-background-color-3-low 3-low">
                         <p class="task-number low-task-counter">0</p>
                     </div>
                 </div>
                 <div class="task-counter-section">
-                <p>Medium</p>
+                    <p>Medium</p>
                     <div class="task-counter task-importance-background-color-2-medium 2-medium">
                         <p class="task-number medium-task-counter">0</p>
                     </div>
                 </div>
                 <div class="task-counter-section">
-                <p>High</p>
+                    <p>High</p>
                     <div class="task-counter task-importance-background-color-1-high 1-high">
                         <p class="task-number high-task-counter">0</p>
                     </div>
                 </div>
                 <div class="task-counter-section">
-                <p>All</p>
+                    <p>All</p>
                     <div class="task-counter task-all-filter-background-color all-tasks">
                         <p class="task-number all-task-counter">0</p>
                     </div>
                 </div>
                 <div class="task-counter-section">
-                <p>Overdue</p>
+                    <p>Overdue</p>
                     <div class="task-counter task-importance-background-color-0-date-exceeded 0-exceeded">
                         <p class="task-number exceeded-task-counter">0</p>
                     </div>
                 </div>
                 <div class="task-counter-section">
-                <p>Finished</p>
+                    <p>Finished</p>
                     <div class="task-counter task-importance-background-color-4-finished 4-finished">
                         <p class="task-number finished-task-counter">0</p>
                     </div>
@@ -61,7 +61,24 @@
             </div>
             <div class="overdue-tasks"></div>
         </div>
-    <hr class="sidebar-separator">
+        <hr class="sidebar-separator">
+    </div>
+    <div class="task-details-filters">
+        <h2 class="sidebar-header">Filter by tasks details</h2>
+        <form class="filter-by-name">
+            <input class="filter-by-name-input" id="filter-by-name" type="text" placeholder=" ">
+            <label class="filter-by-name-label" for="filter-by-name" autocomplete="off">Filter by name</label>
+            <span>
+            <label for="radio-includes">Includes</label>
+            <input class="radio-includes-name-filter" id="radio-includes" type="radio" name="radio-name"
+                   value="Includes" checked="true">
+          </span>
+            <span>
+            <label for="radio-starts-with">Starts with</label>
+            <input type="radio" id="radio-starts-with" name="radio-name" value="Starts with">
+          </span>
+            <button class="btn btn-submit-filter">Filter</button>
+        </form>
     </div>
 
 </section>
