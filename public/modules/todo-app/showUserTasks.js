@@ -5,20 +5,29 @@ import {setTasksCounters} from "./setTasksCounters.js";
 
 const taskList = document.querySelector('.current-task-list');
 
-const showHeaderText = (arrayLength) => {
-    if (arrayLength === 0) {
+const showHeaderText = (arrayLength, allTasks) => {
+    const emptyTaskContainerGif = document.querySelector('.no-tasks-gif');
+    const allTasksNumber = Object.values(allTasks).reduce((prev, curr) => prev + curr);
+
+    if(allTasksNumber > 0 && arrayLength === 0){
+        document.querySelector('.main-container-info').innerText = "No tasks in this filter!";
+        emptyTaskContainerGif.data='images/emptyfilter.gif';
+        emptyTaskContainerGif.style.display = 'block';
+    }
+    else if (arrayLength === 0) {
         document.querySelector('.main-container-info').innerText = "Hooray! You don't have any tasks to do!";
-        document.querySelector('.no-tasks-gif').style.display = 'block';
+        emptyTaskContainerGif.data='images/notasks.gif';
+        emptyTaskContainerGif.style.display = 'block';
     } else {
         document.querySelector('.main-container-info').innerText = "Your tasks";
-        document.querySelector('.no-tasks-gif').style.display = 'none';
+        emptyTaskContainerGif.style.display = 'none';
     }
 }
 
 export const showUserTasks = (tasks, countedTasks) => {
     taskList.innerText = "";
 
-    showHeaderText(tasks.length);
+    showHeaderText(tasks.length, countedTasks);
 
     setTasksCounters(countedTasks);
 
