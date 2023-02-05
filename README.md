@@ -5,4 +5,6 @@ User can create new task (set task name and importance level), edit created task
 
 Tech:<br>HTML/CSS, JavaScript + Node.js/Express.js
 
+Link to project on replit.com [ToDo App](https://replit.com/@BartekCiernia/ToDoApp)
+
 <hr>
