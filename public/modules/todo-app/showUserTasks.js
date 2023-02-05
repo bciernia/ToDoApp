@@ -119,7 +119,7 @@ export const showUserTasks = (tasks, countedTasks) => {
 
             if (arrayItem.isTaskDeadlineAvailable) task.appendChild(btnDeadLine);
 
-            if(arrayItem.isTaskOverdue && arrayItem.isTaskFinished){
+            if(arrayItem.isTaskOverdue){
                 task.removeChild(btnDeadLine);
                 task.appendChild(btnTaskOverdue);
             }
