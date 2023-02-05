@@ -10,6 +10,7 @@
     --modalColor: #FEA82F;
     --footerColor: #ffd0b4;
     --tooltipColor: #fac79c;
+    --modalInputColor: #ffb677;
 }
 
 body {
@@ -133,6 +134,15 @@ li {
 .task-is-finished {
     text-decoration: line-through;
     text-decoration-thickness: 2px;
+}
+
+.edit-task-name-input{
+    border: 1.5px solid black;
+    border-radius: 10px;
+    font-size: 1rem;
+    height: 1.75rem;
+    padding: 0 1rem;
+    background-color: var(--modalInputColor);
 }
 
 .btn-img {
