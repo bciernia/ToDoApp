@@ -1,4 +1,5 @@
 import {createParagraph} from "../core/domManager.js";
+import {AlertMessage} from "./alertMessages.js";
 
 const taskForm = document.querySelector(".new-task-from");
 
@@ -10,9 +11,9 @@ export const createTaskFromUserData = () => {
     const alertParagraph = taskForm.getElementsByClassName('error-message');
 
     //ALERT MESSAGES
-    const emptyTaskName = createParagraph("*Task name cannot be empty", ["error-message"]);
-    const wrongDate = createParagraph("*Task date cannot be earlier than today", ["error-message"]);
-    const emptyDate = createParagraph("*Task date cannot be empty", ["error-message"]);
+    const emptyTaskName = createParagraph(AlertMessage.EmptyTaskName, ["error-message"]);
+    const wrongDate = createParagraph(AlertMessage.WrongDate, ["error-message"]);
+    const emptyDate = createParagraph(AlertMessage.EmptyDate, ["error-message"]);
 
     const alerts = [];
 
