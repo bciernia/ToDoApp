@@ -1,7 +1,7 @@
 const express = require('express');
 const {writeFile, readFile} = require('fs').promises;
 const {setCorrectData, setDeadlineExceeded} = require('../backend-functions/checkUserData');
-const {getFilteredTasksByState} = require("../backend-functions/getFilteredTasks");
+const {getFilteredTasksByState, getFilteredTasksByName} = require("../backend-functions/getFilteredTasks");
 const {countAllTasks} = require("../backend-functions/countAllTasks");
 
 const taskRouter = express.Router();
@@ -36,6 +36,15 @@ taskRouter
         const tasks = await getParsedTasksFromFile();
         const countedTasks = countAllTasks(tasks);
         const filteredTasks = getFilteredTasksByState(tasks, tasksFilter);
+
+        res.status(201).send([filteredTasks, countedTasks]);
+    })
+
+    .get('/:filterType/:tasksFilter', async (req, res) => {
+        const {filterType, tasksFilter} = req.params;
+        const tasks = await getParsedTasksFromFile();
+        const countedTasks = countAllTasks(tasks);
+        const filteredTasks = getFilteredTasksByName(tasks, tasksFilter, filterType);
 
         res.status(201).send([filteredTasks, countedTasks]);
     })

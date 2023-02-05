@@ -17,11 +17,20 @@ const getTasksIncludesFilter = (tasks, filter) => {
 }
 
 const getTasksStartedWithFilter = (tasks, filter) => {
-    return tasks.filter(task => task.startsWith(filter));
+    return tasks.filter(task => task.taskName.startsWith(filter));
 }
+
+const getFilteredTasksByName = (tasks, filter, isFilterIncludesChecked) => {
+
+    if(isFilterIncludesChecked === 'true'){
+      return getTasksIncludesFilter(tasks, filter);
+    }
+
+    return getTasksStartedWithFilter(tasks, filter);
+}
+
 
 module.exports = {
     getFilteredTasksByState,
-    getTasksIncludesFilter,
-    getTasksStartedWithFilter,
+    getFilteredTasksByName,
 }

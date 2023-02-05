@@ -1,6 +1,8 @@
 import {createTaskFromUserData} from "./modules/todo-app/createTaskFromUserData.js";
 import {sendTaskToDb} from "/modules/todo-app/sendTask.js";
-import {renderTasks, renderTasksByFilter} from "./modules/todo-app/getTasks.js";
+import {renderTasks, renderTasksByTaskNameFilter, renderTasksByTaskStateFilter} from "./modules/todo-app/getTasks.js";
+import {clearAlerts, createAlertMessage} from "./modules/todo-app/alert-messages/alertMessageController.js";
+import {AlertMessage} from "./modules/todo-app/alert-messages/alertMessages.js";
 
 const taskForm = document.querySelector(".new-task-from");
 const showModal = document.querySelector('#btn-show-modal');
@@ -10,6 +12,7 @@ const taskDeadlineCheckbox = document.querySelector("#task-deadline-confirm");
 const btnSidebarTransition = document.querySelector(".btn-hide");
 const sidebarSection = document.querySelector(".sidebar");
 const sidebarFilterButtons = sidebarSection.getElementsByClassName('task-counter');
+const filterByNameForm = document.querySelector('.filter-by-name');
 
 renderTasks();
 
@@ -48,7 +51,21 @@ btnSidebarTransition.addEventListener('click', () => {
 
 Array.from(sidebarFilterButtons).forEach(sidebarFilterBtn => {
     sidebarFilterBtn.addEventListener('click',() => {
-        renderTasksByFilter(sidebarFilterBtn.classList[2]);
+        renderTasksByTaskStateFilter(sidebarFilterBtn.classList[2]);
     });
 })
 
+filterByNameForm.addEventListener('submit', event => {
+    event.preventDefault();
+    clearAlerts(filterByNameForm);
+
+    const isRadioButtonIncludesChecked = filterByNameForm.querySelector('.radio-includes-name-filter').checked;
+    const filter = document.querySelector('.filter-by-name-input').value;
+    if(filter === ""){
+        filterByNameForm.appendChild(createAlertMessage(AlertMessage.EmptyTaskNameFilter, ['error-message']));
+        renderTasks();
+        return;
+    }
+
+    renderTasksByTaskNameFilter(isRadioButtonIncludesChecked, filter);
+});
