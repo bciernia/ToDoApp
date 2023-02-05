@@ -16,11 +16,11 @@ const getFilteredTasksByState = (tasks, filter) => {
 }
 
 const getTasksIncludesFilter = (tasks, filter) => {
-    return tasks.filter(task => task.taskName.includes(filter));
+    return tasks.filter(task => task.taskName.toLowerCase().includes(filter));
 }
 
 const getTasksStartedWithFilter = (tasks, filter) => {
-    return tasks.filter(task => task.taskName.startsWith(filter));
+    return tasks.filter(task => task.taskName.toLowerCase().startsWith(filter));
 }
 
 const getFilteredTasksByName = (tasks, filter, isFilterIncludesChecked) => {
