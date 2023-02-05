@@ -1,4 +1,4 @@
-const getFilteredTasks = (tasks, filter) => {
+const getFilteredTasksByState = (tasks, filter) => {
 
     switch (filter){
         case "all-tasks":
@@ -12,6 +12,16 @@ const getFilteredTasks = (tasks, filter) => {
     }
 }
 
+const getTasksIncludesFilter = (tasks, filter) => {
+    return tasks.filter(task => task.taskName.includes(filter));
+}
+
+const getTasksStartedWithFilter = (tasks, filter) => {
+    return tasks.filter(task => task.startsWith(filter));
+}
+
 module.exports = {
-    getFilteredTasks,
+    getFilteredTasksByState,
+    getTasksIncludesFilter,
+    getTasksStartedWithFilter,
 }

@@ -1,7 +1,7 @@
 const express = require('express');
 const {writeFile, readFile} = require('fs').promises;
 const {setCorrectData, setDeadlineExceeded} = require('../backend-functions/checkUserData');
-const {getFilteredTasks} = require("../backend-functions/getFilteredTasks");
+const {getFilteredTasksByState} = require("../backend-functions/getFilteredTasks");
 const {countAllTasks} = require("../backend-functions/countAllTasks");
 
 const taskRouter = express.Router();
@@ -31,18 +31,11 @@ taskRouter
         res.status(200).send([tasks, countedTasks]);
     })
 
-    // .get('/task/:taskId', async(req, res) => {
-    //     const taskId = req.params.taskId;
-    //     const tasks = await getParsedTasksFromFile();
-    //
-    //     tasks[taskId-1] ? res.send(tasks[taskId-1]) : res.send("There is no task with this ID");
-    // })
-
     .get('/:tasksFilter', async (req, res) => {
         const {tasksFilter} = req.params;
         const tasks = await getParsedTasksFromFile();
         const countedTasks = countAllTasks(tasks);
-        const filteredTasks = getFilteredTasks(tasks, tasksFilter);
+        const filteredTasks = getFilteredTasksByState(tasks, tasksFilter);
 
         res.status(201).send([filteredTasks, countedTasks]);
     })
