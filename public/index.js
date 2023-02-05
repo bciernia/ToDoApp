@@ -46,6 +46,7 @@ hideModal.addEventListener('click', () => {
 })
 
 btnSidebarTransition.addEventListener('click', () => {
+    clearAlerts(filterByNameForm);
     sidebarSection.classList.toggle('sidebar-active');
 });
 
@@ -57,7 +58,6 @@ Array.from(sidebarFilterButtons).forEach(sidebarFilterBtn => {
 
 filterByNameForm.addEventListener('submit', event => {
     event.preventDefault();
-    clearAlerts(filterByNameForm);
 
     const isRadioButtonIncludesChecked = filterByNameForm.querySelector('.radio-includes-name-filter').checked;
     const filter = document.querySelector('.filter-by-name-input').value;
