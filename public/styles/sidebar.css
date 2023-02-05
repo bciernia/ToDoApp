@@ -104,7 +104,7 @@
     font-size: 1rem;
     height: 2rem;
     padding: 0 1rem;
-    background-color: #ff4949;
+    background-color: var(--footerColor);
 }
 
 .filter-by-name-input:active{
@@ -118,7 +118,7 @@
     left: 1.125rem;
     transition: all 0.3s ease;
     cursor: text;
-    background-color: cornflowerblue;
+    background-color: var(--footerColor);
 }
 
 .filter-by-name-input:not(:placeholder-shown) + .filter-by-name-label,
