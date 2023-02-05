@@ -14,8 +14,6 @@ export const createTaskFromUserData = () => {
     const wrongDate = createAlertMessage(AlertMessage.WrongDate, ["error-message"]);
     const emptyDate = createAlertMessage(AlertMessage.EmptyDate, ["error-message"]);
 
-
-
     const alerts = [];
     alerts.length = 0;
 
