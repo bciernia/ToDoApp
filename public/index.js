@@ -31,6 +31,8 @@ taskDeadlineCheckbox.addEventListener('change', () => {
 showModal.addEventListener('click', () => {
     taskForm.reset();
     taskForm.querySelector('.new-task-datepicker').disabled = true;
+    const alertParagraph = taskForm.getElementsByClassName('error-message');
+    Array.from(alertParagraph).forEach(alert => taskForm.removeChild(alert));
     addTaskModal.classList.toggle('add-task-modal-active');
 })
 
