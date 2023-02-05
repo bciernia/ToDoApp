@@ -125,3 +125,8 @@
 .filter-by-name-input:focus + .filter-by-name-label{
     transform: translateY(-1.1rem);
 }
+
+.btn-submit-filter{
+    padding: 0.5rem;
+    background-color: #ff9d23;
+}

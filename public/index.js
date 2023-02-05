@@ -68,4 +68,5 @@ filterByNameForm.addEventListener('submit', event => {
     }
 
     renderTasksByTaskNameFilter(isRadioButtonIncludesChecked, filter);
+    sidebarSection.classList.toggle('sidebar-active');
 });
