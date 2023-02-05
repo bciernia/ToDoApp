@@ -41,7 +41,6 @@ export const showUserTasks = (tasks, countedTasks) => {
                 createParagraph(`Deadline: ${new Date(arrayItem.taskDeadline).toLocaleDateString()}, ${new Date(arrayItem.taskDeadline).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`, ["tooltip"]);
             const taskOverdueParagraph = createParagraph(`Overdue task`, ["tooltip"]);
 
-
             /*
             * Button methods
             * */

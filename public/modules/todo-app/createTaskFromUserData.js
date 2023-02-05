@@ -1,5 +1,5 @@
-import {createParagraph} from "../core/domManager.js";
-import {AlertMessage} from "./alertMessages.js";
+import {AlertMessage} from "./alert-messages/alertMessages.js";
+import {clearAlerts, createAlertMessage} from "./alert-messages/alertMessageController.js";
 
 const taskForm = document.querySelector(".new-task-from");
 
@@ -8,18 +8,18 @@ export const createTaskFromUserData = () => {
     const taskImportance = taskForm.elements["task-importance"].value;
     const isTaskDeadlineAvailable = taskForm.elements["task-deadline-confirm"].checked;
     const date = new Date(document.querySelector('.new-task-datepicker').value);
-    const alertParagraph = taskForm.getElementsByClassName('error-message');
 
     //ALERT MESSAGES
-    const emptyTaskName = createParagraph(AlertMessage.EmptyTaskName, ["error-message"]);
-    const wrongDate = createParagraph(AlertMessage.WrongDate, ["error-message"]);
-    const emptyDate = createParagraph(AlertMessage.EmptyDate, ["error-message"]);
+    const emptyTaskName = createAlertMessage(AlertMessage.EmptyTaskName, ["error-message"]);
+    const wrongDate = createAlertMessage(AlertMessage.WrongDate, ["error-message"]);
+    const emptyDate = createAlertMessage(AlertMessage.EmptyDate, ["error-message"]);
+
+
 
     const alerts = [];
-
-    Array.from(alertParagraph).forEach(alert => taskForm.removeChild(alert));
-
     alerts.length = 0;
+
+    clearAlerts(taskForm);
 
     if (taskName === "") alerts.push(emptyTaskName);
 
