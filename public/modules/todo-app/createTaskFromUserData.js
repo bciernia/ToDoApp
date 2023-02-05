@@ -35,6 +35,7 @@ export const createTaskFromUserData = () => {
         "isTaskDeadlineAvailable": isTaskDeadlineAvailable,
         "taskDeadline": date,
         "taskImportance": taskImportance,
+        "currentTaskImportance": taskImportance,
         "isTaskFinished": false,
         "isTaskOverdue": false,
     }

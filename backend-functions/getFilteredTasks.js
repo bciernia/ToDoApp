@@ -8,7 +8,7 @@ const getFilteredTasks = (tasks, filter) => {
             return tasks.filter(task => task.isTaskFinished === true);
 
         default:
-            return tasks.filter(task => task.taskImportance === filter && task.isTaskFinished === false);
+            return tasks.filter(task => task.currentTaskImportance === filter && task.isTaskFinished === false);
     }
 }
 

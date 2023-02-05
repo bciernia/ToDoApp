@@ -19,7 +19,7 @@ export const showUserTasks = (tasks) => {
 
     showHeaderText(tasks.length);
 
-    tasks.sort((taskA, taskB) => (taskA.taskImportance > taskB.taskImportance) ? 1 : -1)
+    tasks.sort((taskA, taskB) => (taskA.currentTaskImportance > taskB.currentTaskImportance) ? 1 : -1)
         .forEach(arrayItem => {
             const task = createDiv(["task"]);
             const taskName = createParagraph(arrayItem.taskName, ["task-name-display"]);
@@ -63,10 +63,12 @@ export const showUserTasks = (tasks) => {
             }
             const activateTask = () => {
                 arrayItem.isTaskFinished = false;
+                arrayItem.currentTaskImportance = arrayItem.taskImportance;
                 putTask(arrayItem);
             }
             const checkTask = () => {
                 arrayItem.isTaskFinished = true;
+                arrayItem.currentTaskImportance = "4-finished";
                 putTask(arrayItem);
             }
             const removeTask = () => {
@@ -101,7 +103,7 @@ export const showUserTasks = (tasks) => {
             btnTaskOverdue.appendChild(taskOverdueParagraph);
 
             arrayItem.isTaskFinished ? task.classList.add(`task-importance-background-color-4-finished`)
-                : task.classList.add(`task-importance-background-color-${arrayItem.taskImportance}`);
+                : task.classList.add(`task-importance-background-color-${arrayItem.currentTaskImportance}`);
 
             task.appendChild(taskName);
 
@@ -110,8 +112,6 @@ export const showUserTasks = (tasks) => {
             if(arrayItem.isTaskOverdue){
                 task.removeChild(btnDeadLine);
                 task.appendChild(btnTaskOverdue);
-            }else{
-                task.appendChild(btnDeadLine);
             }
 
             if (arrayItem.isTaskFinished) {
