@@ -39,7 +39,8 @@ export const showUserTasks = (tasks, countedTasks) => {
             const editTaskNameInput = createInput(arrayItem.taskName, ['edit-task-name-input']);
             const taskDeadlineParagraph =
                 createParagraph(`Deadline: ${new Date(arrayItem.taskDeadline).toLocaleDateString()}, ${new Date(arrayItem.taskDeadline).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`, ["tooltip"]);
-            const taskOverdueParagraph = createParagraph(`Overdue task`, ["tooltip"]);
+            const taskOverdueParagraph =
+                createParagraph(`Overdue since ${new Date(arrayItem.taskDeadline).toLocaleDateString()}, ${new Date(arrayItem.taskDeadline).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})}`, ["tooltip"]);
 
             /*
             * Button methods
