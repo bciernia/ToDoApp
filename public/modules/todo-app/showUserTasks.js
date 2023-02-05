@@ -1,6 +1,7 @@
 import {createListRow, createDiv, createBtnWithImg, createParagraph, createInput} from "../core/domManager.js";
 import {deleteTask} from "./deleteTask.js";
 import {putTask} from "./putTask.js";
+import {setTasksCounters} from "./setTasksCounters.js";
 
 const taskList = document.querySelector('.current-task-list');
 
@@ -14,10 +15,12 @@ const showHeaderText = (arrayLength) => {
     }
 }
 
-export const showUserTasks = (tasks) => {
+export const showUserTasks = (tasks, countedTasks) => {
     taskList.innerText = "";
 
     showHeaderText(tasks.length);
+
+    setTasksCounters(countedTasks);
 
     tasks.sort((taskA, taskB) => (taskA.currentTaskImportance > taskB.currentTaskImportance) ? 1 : -1)
         .forEach(arrayItem => {
@@ -28,6 +31,7 @@ export const showUserTasks = (tasks) => {
             const taskDeadlineParagraph =
                 createParagraph(`Deadline: ${new Date(arrayItem.taskDeadline).toLocaleDateString()}, ${new Date(arrayItem.taskDeadline).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`, ["tooltip"]);
             const taskOverdueParagraph = createParagraph(`Overdue task`, ["tooltip"]);
+
 
             /*
             * Button methods

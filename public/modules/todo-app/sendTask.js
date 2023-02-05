@@ -4,7 +4,7 @@ import {postJSONData} from "../core/fetchJSON.js";
 export const sendTaskToDb = async (task) => {
     if(task.taskName === "") return;
 
-    const tasks = await postJSONData({url: `http://localhost:3000/task/addTask`, body: task});
+    const [tasks, countedTasks] = await postJSONData({url: `http://localhost:3000/task/addTask`, body: task});
 
-    showUserTasks(tasks);
+    showUserTasks(tasks, countedTasks);
 }
